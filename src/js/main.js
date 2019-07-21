@@ -23,18 +23,23 @@ const minusButton = document.querySelector('.buttonSubstract--js');
 
 const resetButton = document.querySelector('.buttonReset--js');
 
-
-
-
-
- 
 var numberGlass = document.querySelector('.glass__number--js').innerHTML;
+
+const key = new Date().toISOString().slice(0,10);
+
+
 
 
 addButton.addEventListener('click', (e) =>{
 
   numberGlass++;
   document.querySelector('.glass__number--js').innerHTML = numberGlass;
+
+  localStorage.setItem(key ,JSON.stringify(numberGlass));
+
+  
+
+    console.log(numberGlass)
 
 });
 
@@ -44,6 +49,9 @@ if(numberGlass >0) {
 
   numberGlass--;
   document.querySelector('.glass__number--js').innerHTML = numberGlass;
+  localStorage.setItem(key , JSON.stringify(numberGlass));
+
+    console.log(numberGlass);
 } else {
 
   console.log('nie działa');
@@ -56,5 +64,7 @@ resetButton.addEventListener('click', (e) =>{
 
   numberGlass=0;
   document.querySelector('.glass__number--js').innerHTML = numberGlass;
+
+  localStorage.setItem(key ,JSON.stringify(numberGlass));
 
 });
